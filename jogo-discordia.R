@@ -1,5 +1,5 @@
 ##install.packages("tidyverse")
-install.packages("treemapify")
+##install.packages("treemapify")
 
 library(tidyverse)
 library(treemapify)
@@ -8,14 +8,14 @@ setwd("C:/Users/aliso/OneDrive/Documentos/Projetos R/BBB")
 
 jogo_discordia <- readxl::read_excel("C:/Users/aliso/OneDrive/Documentos/Projetos R/BBB/bbb_jogo_da_discordia.xlsx")
 
-#Analisando frequência do dados
+#Analisando frequÃªncia do dados
 new_table <- jogo_discordia %>%
   select(Indicados, Plaquinha) 
 
 sort(table(new_table$Indicados), decreasing = TRUE) #participantes mais citados
 sort(table(new_table$Plaquinha), decreasing = TRUE) #plaquinhas mais usadas
 
-#Iniciando a construção do 'treemap'
+#Iniciando a construÃ§Ã£o do 'treemap'
 
 tab_treemap <- jogo_discordia %>%
   select(Indicados, Plaquinha) %>%
@@ -23,7 +23,7 @@ tab_treemap <- jogo_discordia %>%
   data.frame()
 
 tab_treemap <- tab_treemap %>%
-  filter(Freq >= 1) #excluindo variáveis que possuem frequência igual a zero
+  filter(Freq >= 1) #excluindo variÃ¡veis que possuem frequÃªncia igual a zero
 
 
 tab_treemap %>%
@@ -31,7 +31,7 @@ tab_treemap %>%
   geom_treemap()+
   geom_treemap_subgroup_text(place = "centre", grow = T, alpha = 0.5) +
   geom_treemap_text(colour = "white", place = "center", reflow = T) +
-  labs(title = "Treemap do Jogo da Discórdia BBB 22") + 
-  labs(subtitle ="Jogo da Discórdia do dia 07/02/2022") +
+  labs(title = "Treemap do Jogo da DiscÃ³rdia BBB 22") + 
+  labs(subtitle ="Jogo da DiscÃ³rdia do dia 07/02/2022") +
   theme(legend.position = "bottom")
   
